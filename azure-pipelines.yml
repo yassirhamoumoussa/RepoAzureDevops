@@ -1,0 +1,23 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Build
+
+displayName: 'Build job'
+steps:
+
+- script: echo Hello, CI/CD!
+ displayName: 'Run a one-line script'
+
+- job: Deploy
+
+displayName: 'Deploy job'
+dependsOn: Build
+
+steps:
+- script: echo Hello, Deployment!
+ displayName: 'Run a deployment script'
